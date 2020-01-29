@@ -3,13 +3,13 @@
 ![JAVA基本数据类型](https://github.com/JCancy/JAVA/blob/master/picture/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.PNG)
 
 1. 基本数据类型：描述具体的数字单元，如1，1.1；
-	|-数值型：
-		|-整型：byte,short,int,long; 默认值：0
-		|-浮点型：float，double;     默认值：0.0
-	|-布尔型：boolean;               默认值：false
-	|-字符型：char;                  默认值：'\u0000'
+* 数值型：
+** 整型：byte,short,int,long; 默认值：0
+** 浮点型：float，double;     默认值：0.0
+* 布尔型：boolean;               默认值：false
+* 字符型：char;                  默认值：'\u0000'
 2. 引用数据类型：涉及到内存关系的使用；
-	|-数组，类，接口                 默认值：null
+* 数组，类，接口                 默认值：null
 
 参考原则：
 * 描述数字首选 int（整数）, double（小数）；
@@ -90,6 +90,7 @@ public class JavaDemo {
 
 
 ## 字符型数据：char,''
+```
 public class JavaDemo {
 	public static void main(String args[]){
 		char c='B'; //字符变量
@@ -104,6 +105,7 @@ public class JavaDemo {
 		System.out.println(num);
 	}
 }
+```
 char 可处理中文，使用Unicode编码；
 
 char 与 int 可相互转换
@@ -117,6 +119,7 @@ char 与 int 可相互转换
 
 
 ## 布尔型：boolean
+```
 public class JavaDemo {
 	public static void main(String args[]){
 		boolean flag=true;
@@ -125,10 +128,12 @@ public class JavaDemo {
 		}
 	}
 }
+```
 取值只有 true, false; 不用0和非0代替
  
 
-3# 字符串：String,""
+## 字符串：String,""
+```
 public class JavaDemo {
 	public static void main(String args[]){
 		String str="Hello";
@@ -137,8 +142,10 @@ public class JavaDemo {
 		System.out.println(str);
 	}
 }
+```
 字符串可使用"+"进行连接
 
+```
 public class JavaDemo {
 	public static void main(String args[]){
 		double x=10.1;
@@ -150,6 +157,7 @@ public class JavaDemo {
 		System.out.println("\tHello World !!!\nHello\"JAVA\"!!!");
 	}
 }
+```
 数据范围大的和数据范围小的类进行计算，自动转换为数据范围大的；
 
 若有 String 字符串，所有类型转换为 String;
