@@ -1,6 +1,4 @@
-# JAVA编程入门
-
-## 1 JAVA基本概念
+# 1 JAVA基本概念
 
 ```
 public class Hello {
