@@ -70,7 +70,7 @@ CLASSPATH：由JRE提供，用于定义Java程序集程序解释时类加载路�
 
 标识符与关键字：
 关键字50个
-![JAVA关键字]()
+![JAVA关键字](https://github.com/JCancy/JAVA/blob/master/picture/%E5%85%B3%E9%94%AE%E5%AD%97.PNG)
 JDK1.4出现assert关键字，用于异常处理；
 JDK1.5出现enum关键字，用于枚举；
 未使用到的关键字：goto，const;
