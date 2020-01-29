@@ -20,7 +20,7 @@ class HelloWorld {
 }
 ```
 
-java基本单元：类
+## java基本单元：类
 
 “[public] class 类名称{}”：类名称必须与文件名称保持一致，一个*.java文件中只允许有一个public class定义；
 
@@ -31,7 +31,10 @@ java基本单元：类
 * 类首字母必须大写
 
 
-主方法：所有程序执行的起点，一定要定义在类中
+## 主方法
+
+所有程序执行的起点，一定要定义在类中
+
 ```
 [public] class 类名称 {
 	public static void main(String args[]){
@@ -47,7 +50,9 @@ java基本单元：类
 * 输出之后不追加换行：System.out.print(输出内容);（ln==line==换行）
 
 
-JShell：只需编写核心结构代码
+## JShell
+
+只需编写核心结构代码
 
 定义程序文件abc.txt:
 ```
@@ -59,7 +64,9 @@ System.out.println("www.sougou.com");
 退出：/exit
 
 
-CLASSPATH:自动通过CLASSPATH所设路径进行类的加载
+## CLASSPATH
+
+自动通过CLASSPATH所设路径进行类的加载
 
 默认设置：SET CLASSPATH=.
 
@@ -68,13 +75,13 @@ PATH:操作系统提供的路经配置，定义所有可执行程序的路径；
 CLASSPATH：由JRE提供，用于定义Java程序集程序解释时类加载路径，可使用“SET CLASSPATH=路径”的形式设置
 
 
-注释：
+## 注释
 * 单行注释：//；
 * 多行注释：/* ... */;
 * 文档注释：/**   */,其中有较多选项，建议通过开发工具控制；
 
 
-标识符与关键字：
+## 标识符与关键字
 
 关键字50个
 
