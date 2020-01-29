@@ -21,7 +21,9 @@ class HelloWorld {
 ```
 
 java基本单元：类
+
 “[public] class 类名称{}”：类名称必须与文件名称保持一致，一个*.java文件中只允许有一个public class定义；
+
 “class 类名称{}”：类名称可以与文件名称不一致，但是编译后的*.class名称是class定义的类名称，解析的时候解析的是生成的*.class的文件名称；在一个*.java文件中可以定义多个class，且编译后会形成不同的*.class文件；
 
 提示：关于以后原代码定义问题
