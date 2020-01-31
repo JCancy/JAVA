@@ -83,7 +83,9 @@ public class JavaDemo {
 	}
 }
 ```
+
 ![声明并实例化对象内存分析](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90.PNG)
+
 
 ```
 public class JavaDemo {
@@ -96,7 +98,9 @@ public class JavaDemo {
 	}
 }
 ```
+
 ![分步骤完成内存分析](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%902.PNG)
+
 
 注意：所有对象在调用类中的属性或方法时，必须要实例化完成后才可执行。
 
