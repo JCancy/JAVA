@@ -1,0 +1,653 @@
+# 数组的定义与使用
+
+## 数组的基本定义
+
+数组：一组相关变量的集合。
+
+Java 中将数组定义为引用数据类型，涉及内存分配，使用关键字new处理。
+
+数组的定义格式：
+* 数组的动态初始化，初始化之后数组每一个元素的保存内容为其对应数据类型的默认值：
+	* 数据类型 数组名称 [] = new 数据类型 [长度];
+	* 数据类型 [] 数组名称 = new 数据类型 [长度];
+* 数组的静态初始化，在数组定义的时候就为其设置好了里面的内容：
+	* 简化格式：数据类型 数组名称 [] = {数据1,数据2,数据3,……} ;
+	* 完整格式：数据类型 数组名称 [] = new 数据类型 [] {数据1,数据2,数据3,……} ;
+
+创建了一个数组之后可以按照如下方式进行使用：
+* 数组里面可以通过脚标进行每一个元素的访问，角标从0开始定义，可使用角标范围：“0~数组长度-1”（超过会出现“ArrayIndexOutOfBoundsException”数组越界异常）；
+* 使用数组是为了进行方便的变量管理，所以在进行数组操作时往往利用 for 循环完成；
+* 对于数组长度可使用“数组名称.length”属性进行获取。
+
+动态初始化:
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		//使用数组的动态初始化实现了数组的定义
+		int data [] = new int [3] ;
+		data [0] = 11 ;
+		data [1] = 12 ;
+		data [2] = 30 ;
+		for (int x = 0 ; x < data.length ; x ++) {
+			System.out.println(data[x]) ;
+		}
+	}
+}
+```
+
+静态初始化：
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		//使用数组的动态初始化实现了数组的定义
+		int data [] = new int [] {11,23,56} ;
+		for (int x = 0 ; x < data.length ; x ++) {
+			System.out.println(data[x]) ;
+		}
+	}
+}
+```
+
+## 数组引用传递分析
+
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		//使用数组的动态初始化实现了数组的定义
+		int data [] = new int [3] ;
+		data [0] = 10 ;
+		data [1] = 20 ;
+		data [2] = 30 ;
+		for (int x = 0 ; x < data.length ; x ++) {
+			System.out.println(data[x]) ;
+		}
+	}
+}
+```
+
+![数组动态初始化内存分析](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%908.PNG)
+
+
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		//使用数组的动态初始化实现了数组的定义
+		int data [] = new int [] {10,20,30} ;
+		int temp [] = data ; //引用传递
+		temp [0] = 99 ;
+		for (int x = 0 ; x < data.length ; x ++) {
+			System.out.println(data[x]) ;
+		}
+	}
+}
+```
+
+![数组静态初始化内存分析](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%909.PNG)
+
+由于数组属于引用类型，所以一定要为其开辟堆内存空间后才可以使用。
+
+若使用了为开辟堆内存空间的数组则会出现“NullPointerException”异常。
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = null ;
+		System.out.println(data[0]) ;
+	}
+}
+```
+必须提供有实例化对象才可以使用下标的形式进行数组的操作。
+
+## foreach迭代输出
+
+从JDK 1.5之后，为减轻下标对程序的影响（下标处理不当会出现数组越界异常），引入了增强型 for 循环（foreach），可自动获取数组中的每一个元素，避免下标访问。
+
+foreach 语法结构：
+```
+for (数据类型 变量：数组|集合){}
+```
+最大特点在于可自动将数组中的每一个元素自动取出保留在变量中，这样可直接通过变量获取数组内容而避免下标的方式获取。
+
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {1,2,3,4,5} ;
+		for (int temp : data) { //自动循环，将data数组每一个内容交给each
+			System.out.println(temp) ;
+		}
+	}
+}
+```
+好处在于可以避免下标操作
+
+
+
+## 二维数组
+
+二维数组初始化：
+* 动态初始化：
+	* 数据类型 数组名称 [][] = new 数据类型 [行个数][列个数] ;
+* 静态初始化：
+	* 数据类型 数组名称 [][] = new 数据类型 {{1,3,5,……},{4,7,9,……},……} ;
+
+定义二维数组
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [][] = new int [][] {{1,2,3,4,5}, {1,2,3},{5,6,7,8}} ;
+		for (int x = 0 ; x < data.length; x++) { //自动循环，将data数组每一个内容交给each
+			for (int y = 0 ; y < data[x].length ; y++) {
+				System.out.println("data[" + x + "][" + y + "] = " + data[x][y]) ;
+			}
+			System.out.println() ;
+		}
+	}
+}
+```
+
+使用 foreach输出：
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [][] = new int [][] {{1,2,3,4,5}, {1,2,3},{5,6,7,8}} ;
+		for (int temp [] : data) { //自动循环，将data数组每一个内容交给each
+			for (int num [] : temp) {
+				System.out.print(num + "、") ;
+			}
+			System.out.println() ;
+		}
+	}
+}
+```
+默认GBK编译，若出错使用“javac -encoding UTF-8 ArrayDemo.java”进行编译
+
+## 数组与方法
+
+数组的引用传递：
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {{1,2,3,4,5}, {1,2,3},{5,6,7,8}} ;
+		printArray(data) ; //传递数组
+	}
+	//要求接受一个int型的数组
+	public static void printArray(int temp []) {
+		for (int x = 0; x<temp.length; x++) {
+			System.out.println(temp[x]) ;
+		}
+	}
+}
+```
+![数组引用传递内存分析1](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%9010.PNG)
+
+
+通过方法初始化数组：
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = initArray() ; //通过方法获得数组内容
+		printArray(data) ; //传递数组
+	}
+	public static int [] initArray () {
+		int arr [] = new int [] {1,2,3,4,5} ;
+		return arr ; //返回一个数组
+	}
+	//要求接受一个int型的数组
+	public static void printArray(int temp []) {
+		for (int x = 0; x<temp.length; x++) {
+			System.out.println(temp[x]) ;
+		}
+	}
+}
+```
+
+![数组引用传递内存分析2](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%9011.PNG)
+
+通过方法改变数组内容：
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {1,2,3,4,5} ; //通过方法获得数组内容
+		changeArray(data) ; //修改数组内容
+		printArray(data) ; //传递数组
+	}
+	public static void changeArray (int arr[]) {
+		for (int x = 0; x < arr.length; x++ ) {
+			arr[x] *= 2; //每个元素的内容*2保存
+		}
+	}
+	//要求接受一个int型的数组
+	public static void printArray(int temp []) {
+		for (int x = 0; x<temp.length; x++) {
+			System.out.println(temp[x]) ;
+		}
+	}
+}
+```
+
+![数组引用传递内存分析3](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%9012.PNG)
+
+例：定义一个 int 数组,要求可计算出数组元素的总和，最大值，最小值，平均值。
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {1,2,3,4,5} ; 
+		int sum = 0;
+		double avg = 0.0 ;
+		int max = data[0]; //假设第一个是最大值
+		int min = data[0]; //假设第一个是最小值
+		for (int x = 0; x < data.length; x++ ) {
+			if (data[x] > max) {
+				max = data[x] ;
+			}
+			if (data[x] < min) {
+				min = data[x] ;
+			}
+			sum += data[x] ;
+		}
+		avg = sum / data.length ;
+		System.out.println("数组内容总和：" + sum) ;
+		System.out.println("数组内容平均值：" + avg) ;
+		System.out.println("数组内容最大值：" + max) ;
+		System.out.println("数组内容最小值：" + min) ;
+	}
+	//要求接受一个int型的数组
+	public static void printArray(int temp []) {
+		for (int x = 0; x<temp.length; x++) {
+			System.out.println(temp[x]) ;
+		}
+	}
+}
+```
+
+改善操作设计：
+```
+class ArrayUtil{ //操作工具类
+	private int sum ;
+	private double avg ;
+	private int max ;
+	private int min ;
+	public ArrayUtil(int data[]) { //进行数组计算
+		this.max = data[0]; //假设第一个是最大值
+		this.min = data[0]; //假设第一个是最小值
+		for (int x = 0; x < data.length; x++ ) {
+			if (data[x] > max) {
+				this.max = data[x] ;
+			}
+			if (data[x] < min) {
+				this.min = data[x] ;
+			}
+			this.sum += data[x] ;
+		}
+		this.avg = this.sum / data.length ;
+	}
+	public int getSum() {
+		return this.sum ;
+	}
+	public double getAvg() {
+		return this.avg ;
+	}
+	public int getMax() {
+		return this.max ;
+	}
+	public int getMin() {
+		return this.min ;
+	}
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {1,2,3,4,5} ; 
+		ArrayUtil util = new ArrayUtil(data) ;
+		System.out.println("数组内容总和：" + util.getSum()) ;
+		System.out.println("数组内容平均值：" + util.getAvg()) ;
+		System.out.println("数组内容最大值：" + util.getMax()) ;
+		System.out.println("数组内容最小值：" + util.getMin()) ;
+	}
+}
+```
+
+
+## 数组排序案例分析
+
+```
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {8,9,0,2,3,5,10,7,6,1} ;
+		for (int x = 0; x<data.length; x++) {
+			for (int y = 0; y < data.length - x - 1; y++) {
+				if (data[y] > data[y+1]) { //交换数据
+					int temp = data[y] ;
+					data[y] = data[y+1] ;
+					data[y+1] = temp ;
+				}
+			}
+		}
+		printArray(data) ;
+	}
+	public static void printArray(int temp []){
+		for (int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + ",") ;
+		}
+		System.out.println() ;
+	}
+}
+```
+![数组排序](https://github.com/JCancy/JAVA/blob/master/picture/%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F.PNG)
+
+```
+class ArrayUtil {
+	public static void sort(int data[]) { //进行数组排序，类中没有属性，不需要产生实例化对象，使用static方法
+		for (int x = 0; x<data.length; x++) {
+			for (int y = 0; y < data.length - x - 1; y++) {
+				if (data[y] > data[y+1]) { //交换数据
+					int temp = data[y] ;
+					data[y] = data[y+1] ;
+					data[y+1] = temp ;
+				}
+			}
+		}
+	}
+	public static void printArray(int temp []){
+		for (int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + ",") ;
+		}
+		System.out.println() ;
+	}
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {8,9,0,2,3,5,10,7,6,1} ;
+		ArrayUtil.sort(data) ; // 排序
+		ArrayUtil.printArray(data) ;
+	}	
+}
+```
+
+static: 进行类设计时，如果发现类中没有属性存在，定义没有必要使用普通方法，因为普通方法需要在产生实例化对象的情况下才能调用。
+
+
+
+
+## 数组转置案例分析
+
+定义一个新的数组，逆序保存：（会产生垃圾空间）
+
+![数组逆序方法1](https://github.com/JCancy/JAVA/blob/master/picture/%E6%95%B0%E7%BB%84%E9%80%86%E5%BA%8F1.PNG)
+
+```
+class ArrayUtil {
+	
+	public static void printArray(int temp []){
+		for (int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + ",") ;
+		}
+		System.out.println() ;
+	}
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {1,2,3,4,5,6,7,8,9} ;
+		int temp [] = new int [data.length]; //第二个数组
+		int foot = temp.length - 1; //第二个数组的脚标
+		for (int x=0; x<data.length; x++) {
+			temp[foot --] = data[x] ;
+		}
+		data = temp ;
+		ArrayUtil.printArray(data) ;
+	}	
+}
+```
+![数组逆序内存分析](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%9013.PNG)
+
+一个数组转置：
+
+![数组逆序方法2](https://github.com/JCancy/JAVA/blob/master/picture/%E6%95%B0%E7%BB%84%E9%80%86%E5%BA%8F2.PNG)
+
+```
+class ArrayUtil {
+	
+	public static void printArray(int temp []){
+		for (int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + ",") ;
+		}
+		System.out.println() ;
+	}
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {1,2,3,4,5,6,7,8,9} ;
+		int center = data.length / 2 ; //确定转换次数
+		int head = 0 ; //脚标
+		int tail = data.length - 1 ;  //脚标 
+		for (int x=0; x<center; x++) {
+			int temp = data [head] ;
+			data [head] = data [tail] ;
+			data [tail] = temp ;
+			head ++ ;
+			tail -- ;
+		}
+		ArrayUtil.printArray(data) ;
+	}	
+}
+```
+
+两种实现比较：
+* 第一种处理方式循环较多且会产生垃圾；
+* 第二种循环降低，存在if判断增加了时间复杂度，但可减少无用对象的产生以提升性能。
+
+将转换方法变为类定义：
+```
+class ArrayUtil {
+	public static void reverse(int data[]){
+		int center = data.length / 2 ; //确定转换次数
+		int head = 0 ; //脚标
+		int tail = data.length - 1 ;  //脚标 
+		for (int x=0; x<center; x++) {
+			int temp = data [head] ;
+			data [head] = data [tail] ;
+			data [tail] = temp ;
+			head ++ ;
+			tail -- ;
+		}
+	}
+	public static void printArray(int temp []){
+		for (int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + ",") ;
+		}
+		System.out.println() ;
+	}
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {1,2,3,4,5,6,7,8,9} ;
+		ArrayUtil.reverse(data) ;
+		ArrayUtil.printArray(data) ;
+	}	
+}
+```
+
+
+
+## 数组相关类库
+
+1. 数组排序：java.util.Arrays.sort(数组名称)
+```
+class ArrayUtil {
+	public static void printArray(int temp []){
+		for (int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + ",") ;
+		}
+		System.out.println() ;
+	}
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int data [] = new int [] {1,2,3,4,5,6,7,8,9} ;
+		java.util.Arrays.sort(data) ;
+		ArrayUtil.printArray(data) ;
+	}	
+}
+```
+
+2.数组拷贝：
+* System.arraycopy(源数组，源数组开始点，目标数组，目标数组开始点，拷贝长度)
+
+假设有两个数组：
+* 数组1：1，2，3，4，5，6，7，8，9；
+* 数组2：11，22，33，44，55，66，77，88，99；
+要求拷贝之后数组2为：11，22，33，6，7，8，77，88，99
+
+```
+class ArrayUtil {
+	public static void printArray(int temp []){
+		for (int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + ",") ;
+		}
+		System.out.println() ;
+	}
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int dataA [] = new int [] {1,2,3,4,5,6,7,8,9} ;
+		int dataB [] = new int [] {11,22,33,44,55,66,77,88,99} ;
+		System.arraycopy(dataA,5,dataB,3,3) ;
+		ArrayUtil.printArray(dataB) ;
+	}	
+}
+```
+
+自行实现：
+```
+class ArrayUtil {
+	public static void printArray(int temp []){
+		for (int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + ",") ;
+		}
+		System.out.println() ;
+	}
+	public static void arraycopy(int[] src, int sindex,int[] dsc,int dindex,int length) {
+		for (int x = 0 ; x < length ; x ++) {
+			dsc[dindex ++] = src[sindex ++] ;
+		}
+	}
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		int dataA [] = new int [] {1,2,3,4,5,6,7,8,9} ;
+		int dataB [] = new int [] {11,22,33,44,55,66,77,88,99} ;
+		ArrayUtil.arraycopy(dataA,5,dataB,3,3) ;
+		ArrayUtil.printArray(dataB) ;
+	}	
+}
+```
+
+## 方法可变参数
+
+传统实现(使用数组)：
+```
+class ArrayUtil {
+	public static int sum(int[] data) {
+		int sum = 0 ;
+		for (int temp : data) {
+			sum += temp ;
+		}
+		return sum ;
+	} 
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		System.out.println(ArrayUtil.sum(new int [] {1,2,3})) ;
+	}	
+}
+```
+
+采用可变参数方法：
+```
+class ArrayUtil {
+	public static int sum(int ... data) { //变种数组
+		int sum = 0 ;
+		for (int temp : data) {
+			sum += temp ;
+		}
+		return sum ;
+	} 
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		System.out.println(ArrayUtil.sum(1,2,3)) ;
+		System.out.println(ArrayUtil.sum(new int [] {1,2,3})) ;
+	}	
+}
+```
+可变参数的最大作用在于，在进行程序类设计或者开发者调用时，利用此种形式可避免数组的传递操作。可变参数的本质依然是数组。
+
+
+
+## 对象数组
+
+Java 程序中，各种数据类型都可以成为数组类型，类也可以成为数组类型，这样的数组称为对象数组
+
+对象数组的定义格式：
+* 动态初始化：类 对象数组名称[] = new 类 [长度];（每一个元素的内容都是null
+* 静态初始化：类 对象数组名称[] = new 类 [] {实例化对象，实例化对象};
+
+使用动态初始化定义对象数组：
+```
+class Person {
+	private String name ;
+	private int age ;
+	public Person(String name, int age) {
+		this.name = name ;
+		this.age = age ;
+	}
+	public String getInfo() {
+		return "姓名：" + this.name + "、年龄" + this.age ;
+	}
+	//setter,getter略
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		Person per [] = new Person[3] ; //对象数组
+		per[0] = new Person("张三",10) ;
+		per[1] = new Person("李四",20) ;
+		per[2] = new Person("王五",30) ;
+		for (int x = 0; x < per.length; x ++) {
+			System.out.println(per[x].getInfo()) ; //不加getInfo()得到的时对象编码
+		}
+	}	
+}
+```
+
+使用静态初始化定义对象数组：
+```
+class Person {
+	private String name ;
+	private int age ;
+	public Person(String name, int age) {
+		this.name = name ;
+		this.age = age ;
+	}
+	public String getInfo() {
+		return "姓名：" + this.name + "、年龄" + this.age ;
+	}
+	//setter,getter略
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		Person per [] = new Person[] {
+			new Person("张三",10) ,
+			new Person("李四",20) ,
+			new Person("王五",30) }; //对象数组
+		for (int x = 0; x < per.length; x ++) {
+			System.out.println(per[x].getInfo()) ; //不加getInfo()得到的时对象编码
+		}
+	}	
+}
+```
+
+对象数组本身只是更换了数组定义的类型。
+
+![对象数组内存分析](https://github.com/JCancy/JAVA/blob/master/picture/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%9014.PNG)
+
+所有开发都离不开对象数组。
+* 数组最大缺陷：长度固定；
+* 数组优势：线性保存，根据索引访问，速度较快（时间复杂度为1）。
