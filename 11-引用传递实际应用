@@ -1,0 +1,167 @@
+# 引用传递实际应用
+
+## 类关联结构
+
+```
+class Car {
+	private String name ;
+	private double price ;
+	private Person person ; //一辆车属于一个人
+	public Car(String name, double price) {
+		this.name = name ;
+		this.price = price ;
+	}
+	public void setPerson(Person person){
+		this.person = person ;
+	}
+	public Person getPerson(){
+		return this.person ;
+	}
+	public String getInfo() {
+		return "名称：" + this.name + "、价格：" + this.price ;
+	}
+}
+class Person {
+	private String name ;
+	private int age ;
+	private Car car ; //一个人有一辆车
+	public Person(String name, int age) {
+		this.name = name ;
+		this.age = age ;
+	}
+	public void setCar(Car car) {
+		this.car = car ;
+	}
+	public Car getCar() {
+		return this.car ;
+	}
+	public String getInfo() {
+		return "姓名：" + this.name + "、年龄" + this.age ;
+	}
+	//setter,getter略
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		// 1.声明对象并设置彼此关系
+		Person person = new Person("张三",30) ;
+		Car car = new Car("宾利",2000000.00) ;
+		person.setCar(car) ; //一个人有一辆车
+		car.setPerson(person) ; //一辆车属于一个人
+		// 2.根据关系获取数据
+		System.out.println(person.getCar().getInfo()) ; //代码链
+		System.out.println(car.getPerson().getInfo()) ; 
+	}	
+}
+```
+
+Person 和 Car 都是自定义类型，
+
+## 自身关联
+
+```
+class Car {
+	private String name ;
+	private double price ;
+	private Person person ; //一辆车属于一个人
+	public Car(String name, double price) {
+		this.name = name ;
+		this.price = price ;
+	}
+	public void setPerson(Person person){
+		this.person = person ;
+	}
+	public Person getPerson(){
+		return this.person ;
+	}
+	public String getInfo() {
+		return "名称：" + this.name + "、价格：" + this.price ;
+	}
+}
+class Person {
+	private String name ;
+	private int age ;
+	private Car car ; //一个人有一辆车
+	private Person children [] ; //一个人可能有多个孩子
+	public Person(String name, int age) {
+		this.name = name ;
+		this.age = age ;
+	}
+	public void setChildren(Person children[]) {
+		this.children = children ;
+	}
+	public Person getChildren() [] { //注意此处有[],类型为数组
+		return this.children ;
+	}
+	public void setCar(Car car) {
+		this.car = car ;
+	}
+	public Car getCar() {
+		return this.car ;
+	}
+	public String getInfo() {
+		return "姓名：" + this.name + "、年龄" + this.age ;
+	}
+	//setter,getter略
+}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		// 1.声明对象并设置彼此关系
+		Person person = new Person("张三",40) ;
+		Person childA = new Person("张大",20) ;
+		Person childB = new Person("张小",20) ;
+		childA.setCar(new Car("BMW",3000000.00)) ; //匿名对象
+		childB.setCar(new Car("LUHU",15000000.00)) ; //匿名对象
+		person.setChildren(new Person [] {childA, childB}) ; //一个人有多个孩子
+		Car car = new Car("宾利",2000000.00) ;
+		person.setCar(car) ; //一个人有一辆车
+		car.setPerson(person) ; //一辆车属于一个人
+		// 2.根据关系获取数据
+		System.out.println(person.getCar().getInfo()) ; //代码链
+		System.out.println(car.getPerson().getInfo()) ; 
+		// 根据人找到所有的孩子以及孩子对应的车
+		for (int x=0; x<person.getChildren().length; x++) {
+			System.out.println("\t|-" + person.getChildren()[x].getInfo()) ;
+			System.out.println("\t\t|-" + person.getChildren()[x].getCar().getInfo()) ;
+		}
+	}	
+}
+```
+
+关系匹配通过引用数据类型的关联完成
+
+## 合成设计模式
+
+定义描述电脑组成的类，分为显示器和主机，主机上需要设置一系列硬件。
+
+```
+class 电脑 {
+	private 显示器 对象数组 [] ;
+	private 主机 主机；
+}
+class 显示器 {}
+class 主机 {
+	private 主板 对象 ;
+	private 鼠标 对象 ;
+	private 键盘 对象 ;
+}
+class 主板 {
+	private 内存 对象数组 [] ;
+	private CPU 对象数组 [] ;
+	private 显卡 对象 ;
+	private 硬盘 对象数组 [] ;
+}
+class 键盘 {}
+class 鼠标 {}
+class 内存 {}
+class CPU {}
+class 显卡 {}
+class 硬盘 {}
+public class ArrayDemo {
+	public static void main(String args[]) {
+		
+	}	
+}
+```
+类似电脑这样可拆分之后重新组合的设计，在 JAVA 中称为合成设计模式。
+
+
