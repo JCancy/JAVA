@@ -5,7 +5,7 @@
 JDK 1.8以前 String 保存的是字符数组，JDK 1.9以后 String 保存的是字节数组。
 
 实例化对象
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String str = "bt.byr.cn" ; //直接赋值
@@ -15,12 +15,12 @@ public class StringDemo {
 ```
 
 在 String 类中除了可使用直接赋值形式对对象进行实例化，也可以按照传统方式使用构造方法进行实例化。
-```
+```java
 public String (String str) ;
 ```
 
 利用构造方法进行实例化
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String str = new String("bt.byr.cn") ; //构造方法
@@ -36,7 +36,7 @@ String 本身包装的是一个数组，且有两种对象的实例化形式：
 ## 字符串比较
 
 进行 int 类型的 == 比较：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		int x = 10 ; 
@@ -49,7 +49,7 @@ public class StringDemo {
 String 类也涉及相等判断问题，对于 String 类判断也可以使用“==”，但不准确
 
 进行 String 类型的 == 比较：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String x = "bt.byr.cn" ; 
@@ -62,12 +62,12 @@ public class StringDemo {
 两个字符串内容相同，但结果为 false 。
 
 若想实现字符串的准确判断，可使用 String 类中提供的方法：
-```
+```java
 public boolean equals(String str) ;
 ```
 
 eqauls 实现字符串比较：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String x = "bt.byr.cn" ; 
@@ -91,7 +91,7 @@ String 中 “==” 与 equals() 的区别：
 
 任何使用“""” 定义的字符串常量描述的实际都是 String 类的匿名对象。
 
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String x = "bt" ; 
@@ -105,7 +105,7 @@ public class StringDemo {
 
 *对象相等判断技巧：*进行项目开发时，若某些数据由用户输入，且要求这些数据为指定内容的情况下，建议将字符串常量写在前面。
 
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String input = null ; 
@@ -117,7 +117,7 @@ public class StringDemo {
 
 
 将字符串常量写在前面：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String input = null ; 
@@ -135,7 +135,7 @@ equals()方法提供可回避null的判断，将字符串常量写在前面将�
 ## String 类对象两种实例化方式比较
 
 *1. String 直接赋值实例化*
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String str = "mldn" ; 
@@ -150,7 +150,7 @@ public class StringDemo {
 
 String 直接赋值时的数据共享
 
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String strA = "mldn" ; 
@@ -169,7 +169,7 @@ public class StringDemo {
 
 
 分析字符串池
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String strA = "mldn" ; 
@@ -187,7 +187,7 @@ public class StringDemo {
 
 *2. String 类构造方法实例化*
 
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String str = new String("mldn") ; 
@@ -200,7 +200,7 @@ public class StringDemo {
 此时会开辟两块内存空间，之后只会使用一块，另一块由于字符串常量所定义的匿名对象将成为垃圾空间。
 
 另一种方式：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String strA = "mldn" ;
@@ -214,7 +214,7 @@ public class StringDemo {
 在使用构造方法实例化 String 类对象时不会出现自动保存到字符串池山王处理。
 
 构造方法实例化对象时的池操作：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String strA = "mldn" ;
@@ -225,13 +225,13 @@ public class StringDemo {
 ```
 
 构造方法实例化的对象有自己专用的内存空间，但在String类中也提供帮助开发者手工入池的方法：
-```
+```java
 public String intern() ;
 ```
 
 
 手工入池：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String strA = "mldn" ;
@@ -256,7 +256,7 @@ JAVA 中对象（常量）池分为两种：
 * 运行时常量池：当一个程序（*.class）加载之后，存在一些变量，此时提供的常量池。
 
 静态常量池：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String strA = "www.mldn.cn" ;
@@ -271,7 +271,7 @@ public class StringDemo {
 ![字符串内存3](https://github.com/JCancy/JAVA/blob/master/picture/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%86%85%E5%AD%983.PNG)
 
 运行时常量池：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String info = "mldn" ;
@@ -291,7 +291,7 @@ String 类中包含的数组，数组最大的缺点在于长度不可改变。�
 
 ![字符串内存4](https://github.com/JCancy/JAVA/blob/master/picture/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%86%85%E5%AD%984.PNG)
 
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String str = "www." ;
@@ -307,7 +307,7 @@ public class StringDemo {
 在整个过程中，字符串常量内容未发生任何改变，改变的只是String类对象的引用，且这种改变有可能带来大量垃圾空间。
 
 错误案例：
-```
+```java
 public class StringDemo {
 	public static void main(String args[]) {
 		String str = "www." ;
@@ -328,7 +328,7 @@ public class StringDemo {
 
 Java 中的主方法：
 
-```
+```java
 public static void main(String args []) ;
 ```
 
@@ -340,7 +340,7 @@ public static void main(String args []) ;
 * String args[]: 字符串数组，可以实现程序启动参数的接收。
 
 输出启动参数：
-```
+```java
 public class {
 	public static void main(String args [])  {
 		for (String arg : args) {
@@ -351,12 +351,12 @@ public class {
 ```
 
 在程序执行时可以设置参数，每一个参数之间使用空格进行分割：
-```
+```java
 java StringDemo first second
 ```
 
 但若参数本身有空格，则必须使用“""”包装：
-```
+```java
 java StringDemo "first one" "second one"
 ```
 
