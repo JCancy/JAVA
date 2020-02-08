@@ -3,7 +3,7 @@
 ## 方法（method）的定义
 
 方法在主类中定义，并且由主方法直接调用
-```
+```java
 public static 返回值类型 方法名称（[参数变量 变量，……]）{
 	// 该方法要执行的代码
 	[return [返回值];]
@@ -18,7 +18,7 @@ public static 返回值类型 方法名称（[参数变量 变量，……]）{
 第一个单词字母小写，之后每个单词的首字母大写
 
 定义无参无返回值的方法：
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		printMassage();
@@ -33,7 +33,7 @@ public class JavaDemo {
 ```
 
 定义有参有返回值的方法：
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		String result = get(20.0);
@@ -55,7 +55,7 @@ public class JavaDemo {
 ## 方法重载
 
 方法名称相同，参数的类型或个数不同的时候称为方法重载
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int resultA = sum(10,20);
@@ -87,7 +87,7 @@ public class JavaDemo {
 * 每一次调用过程中一定要修改传递的参数条件；
 
 例：计算“1+2+……+100”
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		System.out.println(sum(100));
@@ -103,7 +103,7 @@ public class JavaDemo {
 ```
 
 例：计算“1！+ 2！+ …… + 90！”
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		System.out.println(sum(90));
