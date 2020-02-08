@@ -39,7 +39,7 @@ No. | 方法名称 | 类型 | 描述
 
 
 charAt 方法：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "www.abc.com" ;
@@ -52,7 +52,7 @@ public class StringDemo {
 
 实现字符串与字符数组的转换：
 
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "helloworld" ;
@@ -74,7 +74,7 @@ public class StringDemo {
 * 如果有一位不是数字则表示验证失败。
 
 实现字符串数字检查：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "helloworld" ;
@@ -111,7 +111,7 @@ No. | 方法名称 | 类型 | 描述
 
 
 字节与字符串的转换：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "helloworld" ;
@@ -131,7 +131,7 @@ public class StringDemo {
 
 字符串比较最常用方法为 equals()，该方法区分分大小写。
 
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String strA = "ABC" ;
@@ -152,7 +152,7 @@ No. | 方法名称 | 类型 | 描述
 
 
 进行字符串大小比较：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String strA = "A" ;
@@ -165,7 +165,7 @@ public class StringDemo {
 ```
 
 忽略大小写的比较：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String strA = "A" ;
@@ -195,7 +195,7 @@ No. | 方法名称 | 类型 | 描述
 
 
 判断子字符串是否存在：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "www.github.com" ;
@@ -208,7 +208,7 @@ public class StringDemo {
 此方法是在 JDK 1.5 之后追加的。JDK 1.5 之前只能依靠 indexOf​() 方法。两个方法之间的调用有限制：
 
 判断子字符串是否存在：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "www.github.com" ;
@@ -226,7 +226,7 @@ indexOf​() 是由前向后查找的，lastIndexOf()由后向前查找。
 
 
 lastIndexOf()查找：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "www.github.com" ;
@@ -237,7 +237,7 @@ public class StringDemo {
 ```
 
 判断是否以指定字符串开头或结尾：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "**@@www.github.com##" ;
@@ -260,7 +260,7 @@ No. | 方法名称 | 类型 | 描述
 
 
 
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "helloworld" ;
@@ -284,7 +284,7 @@ No. | 方法名称 | 类型 | 描述
 
 
 全部拆分：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "hello world hello China" ;
@@ -297,7 +297,7 @@ public class StringDemo {
 ```
 
 部分拆分：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "hello world hello China" ;
@@ -311,7 +311,7 @@ public class StringDemo {
 
 有时会遇到无法拆分的情况，此时需要使用"\\"进行转义：
 
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "192.168.2.231" ;
@@ -334,7 +334,7 @@ No. | 方法名称 | 类型 | 描述
 02 | public String substring​(int beginIndex, int endIndex) | 普通 | 截取指定索引范围中的子字符串
 
 
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "www.github.com" ;
@@ -346,7 +346,7 @@ public class StringDemo {
 
 开发中许多开始或结束索引是通过indexOf() 计算得来的
 
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		// 字符串结构：“用户id-photo-姓名.后缀”
@@ -374,7 +374,7 @@ No. | 方法名称 | 类型 | 描述
 01 | public static String format​(String format, 各种类型... args) | 普通 | 根据指定结构进行文本格式化显示
 
 
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		// 字符串结构：“用户id-photo-姓名.后缀”
@@ -404,7 +404,7 @@ No. | 方法名称 | 类型 | 描述
 
 
 concat​：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		// 字符串结构：“用户id-photo-姓名.后缀”
@@ -422,7 +422,7 @@ public class StringDemo {
 isEmpty()主要判断字符串的内容，要在有实例化对象的时候调用。
 
 判断空字符串 isEmpty()：
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "" ;
@@ -433,7 +433,7 @@ public class StringDemo {
 ```
 
 trim()消除左右两边空格:
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "    www.github.com    " ;
@@ -447,7 +447,7 @@ public class StringDemo {
 ```
 
 大小写转换toUpperCase(),toLowerCase():
-```
+```java
 public class StringDemo {
 	public static void main(String args [])  {
 		String str = "www.GitHub.com" ;
@@ -458,7 +458,7 @@ public class StringDemo {
 ```
 
 String 类中没有首字母大写方法，可通过组合实现：
-```
+```java
 class StringUtil {
 	public static String initcap(String str) {
 		if (str == null || "".equals(str)) {
