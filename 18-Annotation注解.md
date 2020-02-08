@@ -23,7 +23,7 @@ Java 中的几个基本注解：@Override, @Deprecated, @SuppressWarnings .
 
 当子类继承一个父类后，如果发现父类中的某些方法功能不足时，往往会采用覆写形式对方法功能进行扩充。
 
-```
+```java
 class Channel {
 	public void connect() {
 		System.out.println("**********Channel******") ;
@@ -46,7 +46,7 @@ public class JavaDemo {
 * 方法覆写时可能单词拼写错误。
 
 追加注解：
-```
+```java
 class Channel {
 	public void connect() {
 		System.out.println("**********Channel******") ;
@@ -71,7 +71,7 @@ public class JavaDemo {
 
 在软件项目的迭代开发中，可能有某个方法或某个类由于在最初设计时考虑不周（存在缺陷），导致新版本不适用（老版本不影响）。此时无法直接删除原始操作，需要进行过度。此时可以采用过期声明，告诉新用户不再使用这些操作。
 
-```
+```java
 class Channel {
 	@Deprecated // 老版本使用，新版本不要使用
 	public void connect() {
@@ -97,14 +97,14 @@ public class JavaDemo {
 ## 压制警告: @SuppressWarnings
 
 在进行上述程序编译时会出现错误提示信息：
-```
+```java
 注: JavaDemo.java使用或覆盖了已过时的 API。
 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
 ```
 
 若此时不愿见到这些提示信息（或已明确知道错误），就可以进行警告信息压制。
 
-```
+```java
 class Channel {
 	@Deprecated // 老版本使用，新版本不要使用
 	public void connect() {
