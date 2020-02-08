@@ -20,7 +20,7 @@
 
 ## 整型数据
 由小到大 byte，short，int，long；
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		//int 变量名称=常量（10是常量，整数类型为int）；
@@ -31,7 +31,7 @@ public class JavaDemo {
 }
 ```
 
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int max=Integer.MAX_VALUE; //获取int最大值
@@ -52,7 +52,7 @@ public class JavaDemo {
 
 
 ## 浮点型数据
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		double x=10.2;
@@ -65,7 +65,7 @@ public class JavaDemo {
 ```
 所有数据类型进行自动转换是均由小类型向大类型进行自动转换处理
 
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		float x=(float)10.2; //转换double为float
@@ -76,7 +76,7 @@ public class JavaDemo {
 ```
 正确结果应为40.8，小数点后0004为JAVA float 存在的bug
 
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x=10;
@@ -90,7 +90,7 @@ public class JavaDemo {
 
 
 ## 字符型数据：char,''
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		char c='B'; //字符变量
@@ -119,7 +119,7 @@ char 与 int 可相互转换
 
 
 ## 布尔型：boolean
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		boolean flag=true;
@@ -133,7 +133,7 @@ public class JavaDemo {
  
 
 ## 字符串：String,""
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		String str="Hello";
@@ -145,7 +145,7 @@ public class JavaDemo {
 ```
 字符串可使用"+"进行连接
 
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		double x=10.1;
