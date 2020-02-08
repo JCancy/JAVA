@@ -1,6 +1,6 @@
 # 1 JAVA基本概念
 
-```
+```java
 public class Hello {
 	public static void main(String args[]){
 		System.out.println("Hello World !");
@@ -8,7 +8,7 @@ public class Hello {
 }
 ```
 
-```
+```java
 class HelloWorld {
 	public static void main(String args[]){
 		System.out.print("Hello");
@@ -33,7 +33,7 @@ class HelloWorld {
 
 所有程序执行的起点，一定要定义在类中
 
-```
+```java
 [public] class 类名称 {
 	public static void main(String args[]){
 		程序代码由此开始执行;
@@ -53,7 +53,7 @@ class HelloWorld {
 只需编写核心结构代码
 
 定义程序文件abc.txt:
-```
+```java
 System.out.println("Hello A!");
 System.out.println("www.sougou.com");
 ```
