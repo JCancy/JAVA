@@ -1,0 +1,261 @@
+# 覆写
+
+子类与父类一旦产生继承关系，子类会继承父类中的全部定义。
+
+当发现父类设计不足且需要保留有父类中方法或属性名称时就会发生覆写。
+
+
+
+## 方法覆写
+
+当子类定义了与父类方法名称相同，参数类型及个数完全相同时，就称为方法的覆写。
+
+```
+class Channel {
+	public void connect () {
+		System.out.println("【Channel父类】进行资源连接") ;
+	}
+}
+class DatabaseChannel extends Channel { //进行数据库连接
+	public void connect () { //保留已有方法名称，进行覆写
+		System.out.println("【子类】进行数据库资源连接") ;
+	}
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		DatabaseChannel channel = new DatabaseChannel() ;
+		channel.connect() ;
+	}
+}
+```
+由于实例化的是子类对象（DatabaseChannel）对象，此时调用的方法是被子类覆写过的方法。
+
+若该方法没有被覆写过，将调用父类中提供的方法。
+
+覆写的意义在于优化父类的功能。
+
+在子类进行方法覆写之后如果想继续调用父类中的方法，就**必须使用“super.方法()”**。
+
+```
+class Channel {
+	public void connect () {
+		System.out.println("【Channel父类】进行资源连接") ;
+	}
+}
+class DatabaseChannel extends Channel { //进行数据库连接
+	public void connect () { //保留已有方法名称，进行覆写
+		super.connect() ; //直接调用父类中的方法
+		System.out.println("【子类】进行数据库资源连接") ;
+	}
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		DatabaseChannel channel = new DatabaseChannel() ;
+		channel.connect() ;
+	}
+}
+```
+
+
+## 方法覆写限制
+
+被覆写方法不能拥有比父类方法更严格的访问控制权限。
+
+访问控制权限：public > default(不写) > private 。
+* 若父类中的方法使用 default 定义，则子类中定义该方法只能使用 public 或 default;
+* 若父类中的方法使用 public 定义，则子类中定义该方法只能使用 public 。
+
+错误的覆写：
+```
+class Channel {
+	public void connect () {
+		System.out.println("【Channel父类】进行资源连接") ;
+	}
+}
+class DatabaseChannel extends Channel { //进行数据库连接
+	void connect () { //保留已有方法名称，进行覆写
+		System.out.println("【子类】进行数据库资源连接") ;
+	}
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		DatabaseChannel channel = new DatabaseChannel() ;
+		channel.connect() ;
+	}
+}
+```
+此时父类方法使用了 public 定义，子类方法使用了 default 权限，权限更加严格，会出现错误。
+
+private 不涉及覆写，因为该方法对子类不可见 ：
+```
+class Channel {
+	private void connect () {
+		System.out.println("【Channel父类】进行资源连接") ;
+	}
+	public void fun() {
+		this.connect() ; //调用本类方法
+	}
+}
+class DatabaseChannel extends Channel { //进行数据库连接
+	// 此时并非覆写，因为父类 connect() 方法不可见，该方法对于子类相当于新定义的方法
+	public void connect () { 
+		System.out.println("【子类】进行数据库资源连接") ;
+	}
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		DatabaseChannel channel = new DatabaseChannel() ;
+		channel.fun() ;
+	}
+}
+```
+
+Override 与 Overloading 区别：
+
+NO. | 区别 | Override | Overloading
+:-: | :-: | :-: | :-: 
+1 | 中文含义 | 重载 | 覆写
+2 | 概念 | 方法名称相同，参数的类型及个数不同 | 方法名称，参数类型及个数，返回值均相同
+3 | 权限 | 没有权限限制 | 被覆写方法不能拥有比父类方法更严格的访问控制权限
+4 | 范围 | 发生在一个类中 | 发生在继承关系类中
+
+在进行方法重载时并未对返回类型作出限制，但较好的习惯是让返回类型保持一致以便处理。
+
+
+
+
+## 属性覆盖
+
+当子类定义了与父类相同名称的成员时称为属性覆盖。
+
+```
+class Channel {
+	String info = "www.github.com" ;
+}
+class DatabaseChannel extends Channel { //进行数据库连接
+	String info = "helloworld" ; //名称相同
+	public void fun () { 
+		System.out.println(super.info) ; //访问父类属性
+		System.out.println(this.info) ; //访问本类属性
+	}
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		DatabaseChannel channel = new DatabaseChannel() ;
+		channel.fun() ;
+	}
+}
+```
+
+属性进行封装后就无法覆写：
+```
+class Channel {
+	private String info = "www.github.com" ; // 属性封装
+	public String getInfo() {
+		return this.info ;
+	}
+}
+class DatabaseChannel extends Channel { //进行数据库连接
+	String info = "helloworld" ; //名称相同
+	public void fun () { 
+		System.out.println(super.getInfo) ; //访问父类属性
+		System.out.println(this.info) ; //访问本类属性
+	}
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		DatabaseChannel channel = new DatabaseChannel() ;
+		channel.fun() ;
+	}
+}
+```
+
+super 与 this 的区别：
+* 在程序类中使用 this 表示先从本类中查找所需属性或方法，如果本类不存在则查找父类定义；若使用 super 则表示不查找子类直接查找父类。
+* this 与 super 都可以进行构造方法的调用，this 调用本类构造，super 由子类调用父类构造；两个语句都要放在构造方法的首行，因此不能同时出现。
+* this 可以表示当前对象
+
+
+## final 关键字
+
+final 在程序之中描述的是终结器的概念，在 java 中使用 final 可实现如下功能：
+* 定义不能被继承的类
+* 定义不能被覆写的方法、常量
+
+
+定义不能被继承的类：
+```
+final class Channel { //不能被继承
+}
+class DatabaseChannel extends Channel { //错误继承
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		
+	}
+}
+```
+
+当子类继承了父类之后可对父类方法进行覆写，当不希望父类中的方法被覆写，可使用 final 进行定义。
+
+定义不能被覆写的方法：
+```
+class Channel { 
+	public final void connect() {}
+}
+class DatabaseChannel extends Channel { 
+	public void connect() {} //错误覆写
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		
+	}
+}
+```
+
+在一些系统开发中，可能使用 1 表示开关打开， 0 表示开关关闭。但直接用 0 或 1 表示可能会造成混乱，希望可通过一些名称表示 0 或 1 。
+
+final 关键字可以定义常量，一旦定义则不可修改。
+
+使用 final 定义常量：
+```
+class Channel { 
+	private final int ON = 1 ; //ON为常量，不可修改
+	private final int OFF = 0 ; //OFF为常量，不可修改
+	public final void connect() {
+		ON = 2 ;
+	}
+}
+public class JavaDemo {
+	public static void main(String args [])  {
+		
+	}
+}
+```
+
+常量往往是公共的，因此常常会使用全局常量的形式进行定义：
+```
+public static final
+```
+
+上述常量应定义为：
+```
+public static final int ON = 1 ; //ON为全局常量
+public static final int OFF = 0 ; //OFF为全局常量
+```
+注：定义全局常量时**每一个字母必须大写**。
+
+
+```
+public class JavaDemo {
+	public static void main(String args [])  {
+		final String info = "github" ; //加 final 后 info 变为常量
+		String strA = "www.github.cn" ;
+		String strB = "www." + info + ".cn" ;
+		System.out.println(strA == strB) ; // true
+	}
+}
+```
+在方法中也可以使用 final 定义参数，此时表示常量。
+
+
