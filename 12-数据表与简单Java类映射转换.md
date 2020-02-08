@@ -26,7 +26,7 @@
 对于数据表和简单JAVA类之间的映射最好的解决步骤：先抛开所有的关联字段不看，写出类的基本组成，之后再通过引用配置关联字段的关系。
 
 第一步：定义DEPT和EMP两个实体类		
-```
+```java
 class Dept{
 	private long deptno ;//描述数据表主键的建议类型为long
 	private String dname ;
@@ -68,7 +68,7 @@ public class JavaDemo {
 
 
 第二步：配置所有关联字段		
-```
+```java
 class Dept{
 	private long deptno ;//描述数据表主键的建议类型为long
 	private String dname ;
@@ -131,7 +131,7 @@ public class JavaDemo {
 
 
 第三步：实现需求		
-```
+```java
 class Dept{
 	private long deptno ;//描述数据表主键的建议类型为long
 	private String dname ;
@@ -224,7 +224,7 @@ public class JavaDemo {
 * 获取一个分类的完整信息 ；
 * 可以根据分类获取其对应的所有子分类信息。
 
-```
+```java
 class Item {
 	private long iid ;
 	private String title ;
@@ -293,7 +293,7 @@ public class JavaDemo {
 
 此时程序只需要考虑实体表设计，不需要考虑访问信息表，只定义两个类即可。
 
-```
+```java
 class Member {
 	private String mid ;
 	private String name ;
@@ -375,7 +375,7 @@ public class JavaDemo {
 * 根据角色找到其权限，以及拥有此角色的用户；
 * 根据权限找到拥有该权限的所有用户信息。
 
-```
+```java
 class Member {
 	private String mid ;
 	private String name ;
