@@ -5,7 +5,7 @@
 ## IF 分支结构
 
 主要根据关系表达式进行判断处理的分支操作
-```
+```java
 if (布尔表达式) {
 	条件满足时执行；
 } else if (布尔表达式) {
@@ -22,7 +22,7 @@ if 最大特点在于可以实现多条件判断
 ## SWITCH 分支语句
 
 SWITCH 只能判断数据（int, char, 枚举, String）而不能使用逻辑判断
-```
+```java
 switch(数据){
 	case 数值 :{
 		数值满足时执行;
@@ -39,7 +39,7 @@ switch(数据){
 }
 ```
 重点在 break 语句，若不加 break，则继续执行后续语句直到程序结束或遇见 break。
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x = 2;
@@ -64,14 +64,14 @@ public class JavaDemo {
 ## while 循环
 
 while 循环
-```
+```java
 while (布尔表达式){
 	条件满足时执行;
 	修改循环条件;
 }
 ```
 数字累加：
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int sum = 0; //保存最终计算总和
@@ -85,14 +85,14 @@ public class JavaDemo {
 }
 ```
 do...while 循环
-```
+```java
 do{
 	条件满足时执行;
 	修改循环条件;
 } while(布尔表达式);
 ```
 数字累加：
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int sum = 0; //保存最终计算总和
@@ -113,13 +113,13 @@ while 循环先判断后执行，do...while 先执行一次后判断。
 
 ## for 循环
 
-```
+```java
 for (定义循环初始化数值；循环判断；修改循环数据){
 	循环语句的执行;
 }
 ```
 数值累加：
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int sum = 0; //保存最终计算总和
@@ -144,7 +144,7 @@ public class JavaDemo {
 
 ## 循环嵌套
 打印乘法口诀表：
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		for (int x=1; x<=9; x++){
@@ -158,7 +158,7 @@ public class JavaDemo {
 ```
 
 打印三角形：
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int line=5;
