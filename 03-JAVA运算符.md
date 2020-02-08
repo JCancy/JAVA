@@ -6,7 +6,7 @@
 
 * ++变量，--变量: 先进行变量的自增或自减，后进行数字的计算；
 * 变量++，变量--：先使用变量进行计算，在进行自增或自减；
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x = 10;
@@ -23,7 +23,7 @@ public class JavaDemo {
 ```
 
 为使代码清晰易读，应写为：
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x = 10;
@@ -47,7 +47,7 @@ public class JavaDemo {
 
 
 ## 三目运算
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x = 10;
@@ -59,7 +59,7 @@ public class JavaDemo {
 }
 ```
 三目运算本身可以进行嵌套处理
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x = 10;
@@ -95,7 +95,7 @@ public class JavaDemo {
 由于JAVA为32位，实际结果应为：00000000 00000000 00000000 00001101
 
 与运算
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x = 13;
@@ -110,7 +110,7 @@ x&y == 00000000 00000000 00000000 00000101 == 5
 
 
 或运算
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x = 13;
@@ -127,7 +127,7 @@ x|y == 00000000 00000000 00000000 00001111 == 15
 
 
 移位计算
-```
+```java
 public class JavaDemo {
 	public static void main(String args[]){
 		int x = 2;
