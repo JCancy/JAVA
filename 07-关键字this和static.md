@@ -8,7 +8,7 @@ this 方法可实现三类结构的描述：
 * 描述当前对象；
 
 使用this调用当前类中属性
-```
+```java
 class Person { //定义一个类
 	private String name ; //人员姓名
 	private int age ;  //人员年龄
@@ -38,7 +38,7 @@ public class JavaDemo {
 * 普通方法调用（this.方法名称()）：实例化对象产生之后就可以调用普通方法。
 
 调用类中的普通方法
-```
+```java
 class Person { //定义一个类
 	private String name ; //人员姓名
 	private int age ;  //人员年龄
@@ -72,7 +72,7 @@ public class JavaDemo {
 ```
 
 构造方法的调用（传统做法）：
-```
+```java
 class Person { //定义一个类
 	private String name ; //人员姓名
 	private int age ;  //人员年龄
@@ -118,7 +118,7 @@ public class JavaDemo {
 
 
 利用this构造调用优化：
-```
+```java
 class Person { //定义一个类
 	private String name ; //人员姓名
 	private int age ;  //人员年龄
@@ -162,7 +162,7 @@ public class JavaDemo {
 * 构造方法互相调用时需保留有程序的出口，避免出现死循环。
 
 构造方法互相调用案例：
-```
+```java
 class Emp {
 	private long empno; //员工编号
 	private String ename;//员工姓名
@@ -208,7 +208,7 @@ public class JavaDemo {
 ```
 
 此时代码有重复，可进行简化定义：
-```
+```java
 class Emp {
 	private long empno; //员工编号
 	private String ename;//员工姓名
@@ -262,7 +262,7 @@ public class JavaDemo {
 * 【非必须】可以提供一个获取对象详细信息的方法，暂时将此方法名称定义为getInfo();
 
 构造一个简单类：
-```
+```java
 class Dept { //类名称可以明确描述出某类事物
 	private long deptno;
 	private String dname;
@@ -312,7 +312,7 @@ static 可以定义属性和方法。
 
 static 定义属性
 
-```
+```java
 class Person{
 	private String name;
 	private int age;
@@ -343,7 +343,7 @@ public class JavaDemo {
 
 此时可将国家属性修改为公共属性，使用static进行标注：
 
-```
+```java
 class Person{
 	private String name;
 	private int age;
@@ -375,7 +375,7 @@ public class JavaDemo {
 
 因此， static 属性可以由类名称直接调用。
 
-```
+```java
 class Person{
 	private String name;
 	private int age;
@@ -412,7 +412,7 @@ static 属性可以在没有实例化对象的时候使用。
 
 
 不产生实例化对象调用 static 属性：
-```
+```java
 class Person{
 	private String name;
 	private int age;
@@ -443,7 +443,7 @@ public class JavaDemo {
 
 
 定义 static 方法：
-```
+```java
 class Person{
 	private String name;
 	private int age;
@@ -478,7 +478,7 @@ public class JavaDemo {
 
 不能使用this:this 为当前对象，但 static 可能没有实例化对象。
 
-```
+```java
 public class JAvaDemo {
 	public static void main(String args[]) {
 		new JavaDemo().print(); //在主类中实例化对象
@@ -497,7 +497,7 @@ static 的应用
 
 可以单独创建一个 static 属性，因为所有对象共享一个 static 属性，在构造方法中可实现数据的统计处理
 
-```
+```java
 class Book {
 	private String title ;
 	private static int count = 0 ;
@@ -517,7 +517,7 @@ public class JavaDemo{
 ```
 
 实现自动命名：
-```
+```java
 class Book {
 	private String title ;
 	private static int count = 0 ;
