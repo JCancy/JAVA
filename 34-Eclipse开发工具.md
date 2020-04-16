@@ -74,7 +74,8 @@ public class Hello {
 * CTRL+shift+/：多行注释；
 * CTRL+shift+F：格式化代码；
 * CTRL+shift+O：自当导入所需包；
-* main+Alt+/(Enter)：主方法快捷键。
+* main+Alt+/(Enter)：主方法快捷键；
+* sysout+Alt+/: 输出快捷键.
 
 其余快捷键可使用 CTRL+shift+L 自行查阅。
 
